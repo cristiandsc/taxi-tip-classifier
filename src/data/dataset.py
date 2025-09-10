@@ -1,7 +1,7 @@
 # src/data/dataset.py
 from pathlib import Path
 import pandas as pd
-from src import config
+import config   # importa directamente el config de la raíz
 
 def load_data(path: str | Path, filetype: str = "parquet") -> pd.DataFrame:
     """
