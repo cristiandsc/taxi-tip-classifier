@@ -1,14 +1,13 @@
 # src/models/train_model.py
 from __future__ import annotations
-from pathlib import Path
-import joblib
 from typing import Iterable
+import joblib
+import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import f1_score
-import pandas as pd
 
-# Ruta a la raíz del repo (este archivo está en repo/src/models/train_model.py)
-REPO_ROOT = Path(__file__).resolve().parents[2]
+from config import MODEL_PATH  # importamos la ruta centralizada
+
 
 def train_random_forest(
     df: pd.DataFrame,
@@ -18,8 +17,26 @@ def train_random_forest(
     n_estimators: int = 100,
     max_depth: int | None = 10,
     random_state: int = 42,
-    model_path: str | Path | None = None,
+    model_path: str | None = None,
 ):
+    """
+    Entrena un RandomForestClassifier y guarda el modelo en disco.
+
+    Args:
+        df: DataFrame con datos preprocesados.
+        target_col: Nombre de la columna objetivo (ej. 'high_tip').
+        features: Lista de columnas predictoras.
+        n_estimators: Número de árboles en el bosque.
+        max_depth: Profundidad máxima de cada árbol.
+        random_state: Semilla aleatoria para reproducibilidad.
+        model_path: Ruta opcional donde guardar el modelo.
+                    Si None, se usa config.MODEL_PATH.
+
+    Returns:
+        clf: Modelo entrenado.
+        f1: F1-score en el conjunto de entrenamiento.
+        model_path: Ruta final donde se guardó el modelo.
+    """
     X = df[features]
     y = df[target_col]
 
@@ -33,15 +50,12 @@ def train_random_forest(
 
     f1 = f1_score(y, clf.predict(X))
 
-    # guardar en <repo>/models/random_forest.joblib por defecto
+    # Usar config.MODEL_PATH si no se pasa ruta
     if model_path is None:
-        model_path = REPO_ROOT / "models" / "random_forest.joblib"
-    else:
-        model_path = Path(model_path)
-        if not model_path.is_absolute():
-            model_path = (REPO_ROOT / model_path).resolve()
+        model_path = MODEL_PATH
 
-    model_path.parent.mkdir(parents=True, exist_ok=True)
+    model_path = str(model_path)  # joblib.dump espera string o Path
+    MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
     joblib.dump(clf, model_path)
 
     return clf, f1, model_path
