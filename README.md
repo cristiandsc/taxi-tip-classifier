@@ -67,7 +67,7 @@ pip install -r requirements.txt
 🚀 Flujo de trabajo
 1. Descarga de datos
 
-Ejecutar notebooks/01-cvasquezp-descarga-data.ipynb
+**Ejecutar notebooks/01-cvasquezp-descarga-data.ipynb**
 
 Descarga el dataset de enero 2020 (NYC Taxi).
 
@@ -75,7 +75,7 @@ Guarda datos crudos en data/raw/.
 
 2. Preprocesamiento
 
-Ejecutar notebooks/02-cvasquezp-preprocesa-data.ipynb
+**Ejecutar notebooks/02-cvasquezp-preprocesa-data.ipynb**
 
 Crea la variable objetivo high_tip (>20%).
 
@@ -85,7 +85,7 @@ Guarda dataset preprocesado en data/processed/taxi_train.parquet.
 
 3. Entrenamiento
 
-Ejecutar notebooks/03-cvasquezp-entrena-modelo.ipynb
+**Ejecutar notebooks/03-cvasquezp-entrena-modelo.ipynb**
 
 Entrena un RandomForestClassifier.
 
@@ -95,7 +95,7 @@ Guarda el modelo en models/random_forest.joblib.
 
 4. Evaluación
 
-Ejecutar notebooks/04-cvasquezp-evalua-modelo.ipynb
+**Ejecutar notebooks/04-cvasquezp-evalua-modelo.ipynb**
 
 Carga datos de febrero 2020.
 
@@ -117,9 +117,9 @@ El modelo identifica bien los viajes con propina alta (recall=0.95).
 
 A mejorar: balance entre precisión y recall para clases negativas.
 
-Ejecutar notebooks/0-cvasquezp-evalua-mensual.ipynb
+**Ejecutar notebooks/05-cvasquezp-evalua-mensual.ipynb**
 
-Evaluación del modelo durante el año. Los meses se selección e el notebook
+Evaluación del modelo durante el año 2020. Los meses se selección en el notebook
 
 Resultados al final del notebook
 
