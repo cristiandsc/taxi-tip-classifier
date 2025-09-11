@@ -1,6 +1,4 @@
-from pathlib import Path
-
-readme_text = """# 🚖 Taxi Tip Classifier
+# 🚖 NYC Taxi Tip Classifier
 
 Proyecto de machine learning para predecir si un viaje de taxi en NYC tendrá una propina **alta** (>20% de la tarifa).  
 Se utiliza un flujo modular basado en notebooks y scripts en `src/` siguiendo buenas prácticas de MLOps.
@@ -41,24 +39,30 @@ taxi-tip-classifier/
 ├── requirements.txt     # Dependencias con versiones
 ├── LICENSE
 └── README.md
+```
 
 ⚙️ Instalación
 
 Clona este repositorio:
 
+```bash
 git clone https://github.com/<usuario>/taxi-tip-classifier.git
 cd taxi-tip-classifier
-
+```
 
 Crea un entorno virtual y activa:
 
+```bash
 conda create -n taxi python=3.10 -y
 conda activate taxi
+```
 
 
 Instala dependencias:
 
+```bash
 pip install -r requirements.txt
+```
 
 🚀 Flujo de trabajo
 1. Descarga de datos
@@ -101,12 +105,13 @@ Genera métricas de validación (reports/metrics_eval_feb2020.json).
 
 📊 Resultados
 
-Ejemplo de métricas en febrero 2020:
+📌 Evaluación en datos de febrero 2020:
 
+```bash
 precision    recall  f1-score   support
 0    0.688     0.130     0.219   2676852
 1    0.596     0.956     0.735   3600002
-
+```
 
 El modelo identifica bien los viajes con propina alta (recall=0.95).
 
