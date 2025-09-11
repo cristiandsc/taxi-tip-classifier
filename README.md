@@ -117,18 +117,20 @@ El modelo identifica bien los viajes con propina alta (recall=0.95).
 
 A mejorar: balance entre precisión y recall para clases negativas.
 
+Ejecutar notebooks/0-cvasquezp-evalua-mensual.ipynb
+
+Evaluación del modelo durante el año. Los meses se selección e el notebook
+
+Resultados al final del notebook
+
+
 🛠️ Tecnologías usadas
 
 Python 3.10
-
 pandas, numpy
-
 scikit-learn
-
 pyarrow
-
 joblib
-
 Jupyter Notebooks
 
 📌 Notas
